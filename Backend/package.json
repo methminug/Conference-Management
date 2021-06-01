@@ -1,0 +1,19 @@
+{
+   "name": "conference-app-back-end",
+   "version": "1.0.0",
+   "description": "NodeJs REST API for conference management tool.",
+   "main": "App.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/methminug/Conference-Management-Application.git"
+   },
+   "author": "IT19018706, IT19179322, IT19161884",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/methminug/Conference-Management-Application/issues"
+   },
+   "homepage": "https://github.com/methminug/Conference-Management-Application#readme"
+}
