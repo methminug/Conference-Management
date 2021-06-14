@@ -1,0 +1,1 @@
+//To export assets like images
