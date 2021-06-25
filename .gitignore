@@ -8,7 +8,7 @@ node_modules/
 dist/
 build/
 .cache/
-back-end/.env
+back-end/
 
 # Compiled Java class files
 *.class

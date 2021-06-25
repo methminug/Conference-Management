@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./Home.module.scss"
-import {SpeakerCard} from "../../components";
-import {Sessioncard} from "../../components";
+import {SpeakerCard, Sessioncard, TrackInfoHeaderSection} from "../../components";
 
 const Home = () => {
     return(
         <div>
+            <TrackInfoHeaderSection trackName="JavaScript" trackDate="12th December 2021" />
             <SpeakerCard />
             <Sessioncard />
         </div>
