@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Count from "./Count";
+import Count from "./AdminUtil/CountCart";
 import Barchart from "./Barchart";
 import Table from "./Table";
 import "./style/admin.css";
