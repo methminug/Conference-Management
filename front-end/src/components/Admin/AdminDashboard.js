@@ -59,11 +59,14 @@ const AdminDashboard = () => {
             <div className="researchTable">
                 <Table
                     Tablecontent={researchPapers}
-                    topic={"Research Papers"}
+                    topic={"Research Papers Details"}
                 />
             </div>
             <div className="workshopsTable">
-                <Table Tablecontent={workshopPapers} topic={"Workshops"} />
+                <Table
+                    Tablecontent={workshopPapers}
+                    topic={"Workshops Details"}
+                />
             </div>
         </div>
     );
