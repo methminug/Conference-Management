@@ -3,6 +3,7 @@ import Count from "./AdminUtil/CountCart";
 import Barchart from "./Barchart";
 import Table from "./Table";
 import "./style/admin.css";
+import ContentToPublish from "./ContentToPublish";
 
 const AdminDashboard = () => {
     const [aCount, setACount] = useState(0);
@@ -68,6 +69,7 @@ const AdminDashboard = () => {
                     topic={"Workshops Details"}
                 />
             </div>
+            <ContentToPublish />
         </div>
     );
 };
