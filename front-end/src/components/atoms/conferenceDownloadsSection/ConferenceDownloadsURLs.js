@@ -1,0 +1,2 @@
+export const WORKSHOP_TEMPLATE_URL = "https://firebasestorage.googleapis.com/v0/b/conference-management-ap-865db.appspot.com/o/ICAF%20-%20Workshop%20template.pptx?alt=media&token=39984611-393b-4f28-b359-64bccd6feefc"
+export const RESEARCH_PAPER_TEMPLATE_URL = "https://firebasestorage.googleapis.com/v0/b/conference-management-ap-865db.appspot.com/o/ICAF%20-%20Research%20Paper%20Template.docx?alt=media&token=388a33bb-6e69-47aa-b164-456ba64df18d"

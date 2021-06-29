@@ -1,9 +1,10 @@
 import React from "react";
-import { Typography, Grid, Button } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 import { BookOutlined, SlideshowOutlined } from "@material-ui/icons";
 
-const ConferenceDownloadsSection = () => {
+import { RESEARCH_PAPER_TEMPLATE_URL, WORKSHOP_TEMPLATE_URL } from "./ConferenceDownloadsURLs";
 
+const ConferenceDownloadsSection = () => {
   return (
     <div
       style={{
@@ -12,11 +13,16 @@ const ConferenceDownloadsSection = () => {
         backgroundColor: "#ffffff",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-evenly", padding:"20px" }}>
-        <Typography variant="h3">
-          Conference Templates
-        </Typography>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          padding: "20px",
+        }}
+      >
+        <Typography variant="h3">Conference Templates</Typography>
         <Button
+        href={RESEARCH_PAPER_TEMPLATE_URL}
           variant="contained"
           color="primary"
           size="large"
@@ -25,6 +31,7 @@ const ConferenceDownloadsSection = () => {
           Download Reasearch Paper template
         </Button>
         <Button
+          href={WORKSHOP_TEMPLATE_URL}
           variant="contained"
           color="secondary"
           size="large"

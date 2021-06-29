@@ -25,22 +25,24 @@ import { useStyles } from "../../assets/globalTheme";
 const Home = () => {
   const classes = useStyles();
 
-  const selectTrack = {
+  const selectTrack = [{
     _id: "",
-    name: "AF CONF 2021",
-    speakers: [],
-    sessions: [],
-  };
+    name: "many languages and frameworks"
+  }];
 
-  const [tracks, setTracks] = useState([]);
-  const [selectedTrack, setSelectedTrack] = useState(selectTrack);
+  const [tracks, setTracks] = useState(selectTrack);
+  const [selectedTrack, setSelectedTrack] = useState([]);
   const [speakers, setSpeakers] = useState([]);
-  const [sessions, setSessions] = useState([]);
 
   useEffect(() => {
     axios.get(URL_GET_TRACKS).then((response) => {
-      console.log(response.data.tracks);
-      setTracks(response.data.tracks);
+
+      response.data.tracks.forEach(element => {
+        selectTrack.push(element)
+      });
+      console.log(selectTrack[0])
+      setTracks(selectTrack);
+      setSelectedTrack(selectTrack[0]);
     });
   }, []);
 
@@ -52,23 +54,15 @@ const Home = () => {
       });
     } else {
       axios.get(URL_GET_TRACKS + selectedTrack._id).then((response) => {
-        setSessions(response.data.sessions);
         setSpeakers(response.data.speakers);
-
       });
     }
   }, [selectedTrack]);
 
   const handleTrackChange = (e) => {
     const thisTrack = e.target.value;
-    //SET SPEAKERS ANBD SESSIONS
-    setSelectedTrack((currentDetails) => {
-      return {
-        ...currentDetails,
-        _id: thisTrack._id,
-        name: thisTrack.name,
-      };
-    });
+    console.log(thisTrack)
+    setSelectedTrack(thisTrack);
   };
 
   return (
@@ -83,23 +77,25 @@ const Home = () => {
           </Typography>
           <Button color="inherit">Login</Button>
           <Typography variant="h6">Select Track</Typography>
-          <FormControl>
-            <Select onChange={handleTrackChange}>
-              <option value={selectTrack}>All tracks</option>
-              {Object.values(tracks).map((track) => (
-                <option value={track}>{track.name}</option>
-              ))}
-            </Select>
-          </FormControl>
         </Toolbar>
       </AppBar>
 
       <TrackInfoHeaderSection
-        trackName={selectedTrack.name}
+        trackName="International Conference on Application Frameworks"
         trackDate="12th December 2021"
       />
+      <Toolbar>
+      <Typography variant="h6" className={classes.sessionText}>With speakers on </Typography>
+        <FormControl>
+          <Select value={selectedTrack} className={classes.sessionDropDown} disableUnderline onChange={handleTrackChange}>
+            {Object.values(tracks).map((track) => (
+              <option value={track}>{track.name}</option>
+            ))}
+          </Select>
+        </FormControl>
+      </Toolbar>
       <SpeakerSection speakers={speakers} />
-      <SessionSection/>
+      <SessionSection />
       <ConferenceDownloadsSection />
     </div>
   );

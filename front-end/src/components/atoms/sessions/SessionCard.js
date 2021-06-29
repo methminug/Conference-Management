@@ -24,7 +24,7 @@ const SessionCard = ({session}) => {
               <Typography variant="h4">{time}</Typography>
             </Grid>
             <Grid item xs={5}>
-              <Typography variant="h3">{session.topic}</Typography>
+              <Typography variant="h4">{session.topic}</Typography>
             </Grid>
           </Grid>
         </Card>

@@ -38,7 +38,7 @@ const SessionSection = () => {
           size="large"
           startIcon={<TollOutlined style={{ fontSize: "60px" }} />}
         >
-          Register for this track
+          Register
         </Button>
       </div>
 

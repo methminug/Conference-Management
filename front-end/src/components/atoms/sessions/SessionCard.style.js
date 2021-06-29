@@ -6,8 +6,8 @@ export const useStyles = makeStyles({
     marginBottom: "35px"
   },
   speakerImage: {
-    height: "160px",
-    width: "160px",
+    height: "100px",
+    width: "100px",
     borderRadius: "50%",
     marginRight: "20px",
     objectFit: "cover",
