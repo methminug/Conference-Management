@@ -12,4 +12,7 @@ export const useStyles = makeStyles({
     marginRight: "20px",
     objectFit: "cover",
   },
+  speakerDesc: {
+    fontSize: "15px",
+  },
 });

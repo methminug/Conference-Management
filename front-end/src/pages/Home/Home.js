@@ -35,6 +35,7 @@ const Home = () => {
   const [tracks, setTracks] = useState([]);
   const [selectedTrack, setSelectedTrack] = useState(selectTrack);
   const [speakers, setSpeakers] = useState([]);
+  const [sessions, setSessions] = useState([]);
 
   useEffect(() => {
     axios.get(URL_GET_TRACKS).then((response) => {
@@ -44,15 +45,16 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (selectedTrack.id === "") {
+    if (selectedTrack._id === "") {
       axios.get(URL_GET_SPEAKERS).then((response) => {
         console.log(response.data.speakers);
         setSpeakers(response.data.speakers);
       });
     } else {
-      axios.get(URL_GET_TRACKS + selectedTrack.id).then((response) => {
-        console.log(response.data.speakers);
+      axios.get(URL_GET_TRACKS + selectedTrack._id).then((response) => {
+        setSessions(response.data.sessions);
         setSpeakers(response.data.speakers);
+
       });
     }
   }, [selectedTrack]);
@@ -63,7 +65,7 @@ const Home = () => {
     setSelectedTrack((currentDetails) => {
       return {
         ...currentDetails,
-        id: thisTrack._id,
+        _id: thisTrack._id,
         name: thisTrack.name,
       };
     });
@@ -83,7 +85,7 @@ const Home = () => {
           <Typography variant="h6">Select Track</Typography>
           <FormControl>
             <Select onChange={handleTrackChange}>
-              <option value={selectTrack} selected={true}>All tracks</option>
+              <option value={selectTrack}>All tracks</option>
               {Object.values(tracks).map((track) => (
                 <option value={track}>{track.name}</option>
               ))}
@@ -97,7 +99,7 @@ const Home = () => {
         trackDate="12th December 2021"
       />
       <SpeakerSection speakers={speakers} />
-      <SessionSection />
+      <SessionSection/>
       <ConferenceDownloadsSection />
     </div>
   );
