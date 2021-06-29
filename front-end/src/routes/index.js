@@ -18,7 +18,7 @@ const AppRoutes = () => {
         //     <PublicRoute exact path={APP_ROUTES.ROOT} Component={Home} />
         // </Router>
         <Router history={history}>
-            <NavigationBar />
+            {/* <NavigationBar/> */}
             <Switch>
                 <PublicRoute exact path={APP_ROUTES.ROOT} Component={Home} />
             </Switch>
