@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Typography } from "@material-ui/core";
+import { Container, Typography, Grid } from "@material-ui/core";
 
 import trackHomeBackground from "../../../assets/images/trackHomeBG.png";
 import { useStyles } from "./trackInfoheaderSection.style";
@@ -13,7 +13,7 @@ const TrackInfoHeaderSection = ({ trackName, trackDate }) => {
         style={{
           backgroundImage: `url(${trackHomeBackground})`,
           backgroundSize: "cover",
-          height: "630px",
+          height: "560px",
           overflow: "auto",
         }}
       >
@@ -23,10 +23,28 @@ const TrackInfoHeaderSection = ({ trackName, trackDate }) => {
             <p className={classes.trackDate}>{trackDate}</p>
           </Container>
         </div>
+        <div>
+          <a
+            href="https://goo.gl/maps/WDjEMiV6BBk2bdrc8"
+            style={{
+              textDecoration: "none",
+              textAlign: "center",
+              position: "absolute",
+              bottom: "0",
+              width: "100%",
+              borderTopColor: "white",
+              borderTopStyle: "solid",
+              padding: "10px",
+              color: "white",
+              borderWidth: "1px",
+              fontSize: "1.5rem",
+            }}
+          >
+            at Sri Lanka Institute of Information Technology
+          </a>
+        </div>
       </div>
-      <div
-      className={classes.trackDescription}
-      >
+      <div className={classes.trackDescription}>
         <Typography variant="body1">
           Presenting the latest findings and implementations of programming
           languages. Lorem ipsum dolor sit amet, consectetur adipiscing elit,

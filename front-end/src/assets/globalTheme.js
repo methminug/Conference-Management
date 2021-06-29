@@ -8,15 +8,17 @@ export const useStyles = makeStyles({
     color: "#F9564F",
   },
   sessionText: {
-    marginRight: "10px",
     color: "#29335C",
+    textAlign: "center",
+    fontSize: "25px"
   },
   sessionDropDown: {
     minWidth: "200px",
     background: "transparent",
     borderColor: "transparent",
     fontWeight: "bold",
-    fontSize: "1.25rem",
+    fontSize: "1.75rem",
     color: "#F9564F",
+    textAlign: "center"
   },
 });

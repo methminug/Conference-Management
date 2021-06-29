@@ -8,17 +8,17 @@ export const useStyles = makeStyles({
   },
   trackDescription: {
     color: "#ffffff",
-    padding: "50px 40px 50px 40px",
+    padding: "80px 50px 80px 50px",
     backgroundColor: "#253d60",
     textAlign: "center",
   },
   trackDate: {
     color: "#1c2a45",
     fontSize: "30px",
-    marginTop: "-10px",
+    marginTop: "30px",
   },
   titleBG: {
-    borderBottomWidth: "250px",
+    borderBottomWidth: "350px",
     borderBottomStyle: "solid",
     borderBottomColor: "#ea4418",
     borderLeftWidth: "0px",
@@ -28,7 +28,7 @@ export const useStyles = makeStyles({
     borderRightStyle: "solid",
     borderRightColor: "transparent",
     height: "0px",
-    width: "60%",
+    width: "50%",
     marginTop: "100px",
   },
 });

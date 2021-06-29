@@ -25,10 +25,12 @@ import { useStyles } from "../../assets/globalTheme";
 const Home = () => {
   const classes = useStyles();
 
-  const selectTrack = [{
-    _id: "",
-    name: "many languages and frameworks"
-  }];
+  const selectTrack = [
+    {
+      _id: "",
+      name: "many languages and frameworks",
+    },
+  ];
 
   const [tracks, setTracks] = useState(selectTrack);
   const [selectedTrack, setSelectedTrack] = useState([]);
@@ -36,11 +38,10 @@ const Home = () => {
 
   useEffect(() => {
     axios.get(URL_GET_TRACKS).then((response) => {
-
-      response.data.tracks.forEach(element => {
-        selectTrack.push(element)
+      response.data.tracks.forEach((element) => {
+        selectTrack.push(element);
       });
-      console.log(selectTrack[0])
+      console.log(selectTrack[0]);
       setTracks(selectTrack);
       setSelectedTrack(selectTrack[0]);
     });
@@ -61,38 +62,34 @@ const Home = () => {
 
   const handleTrackChange = (e) => {
     const thisTrack = e.target.value;
-    console.log(thisTrack)
+    console.log(thisTrack);
     setSelectedTrack(thisTrack);
   };
 
   return (
     <div>
-      <AppBar position="fixed" className={classes.navbar}>
-        <Toolbar>
-          <IconButton edge="end" color="inherit" aria-label="menu">
-            <MenuOpen />
-          </IconButton>
-          <Typography variant="h6" className={classes.logoText}>
-            Conference Logo
-          </Typography>
-          <Button color="inherit">Login</Button>
-          <Typography variant="h6">Select Track</Typography>
-        </Toolbar>
-      </AppBar>
-
       <TrackInfoHeaderSection
         trackName="International Conference on Application Frameworks"
         trackDate="12th December 2021"
       />
-      <Toolbar>
-      <Typography variant="h6" className={classes.sessionText}>With speakers on </Typography>
-        <FormControl>
-          <Select value={selectedTrack} className={classes.sessionDropDown} disableUnderline onChange={handleTrackChange}>
-            {Object.values(tracks).map((track) => (
-              <option value={track}>{track.name}</option>
-            ))}
-          </Select>
-        </FormControl>
+      <Toolbar style={{ display: "flex", justifyContent: "center", margin:"20px 0px 20px 0px" }}>
+        <div>
+          <Typography className={classes.sessionText}>
+            With speakers on
+          </Typography>
+          <FormControl>
+            <Select
+              value={selectedTrack}
+              className={classes.sessionDropDown}
+              disableUnderline
+              onChange={handleTrackChange}
+            >
+              {Object.values(tracks).map((track) => (
+                <option value={track}>{track.name}</option>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
       </Toolbar>
       <SpeakerSection speakers={speakers} />
       <SessionSection />

@@ -15,9 +15,7 @@ const SpeakerSection = ({speakers}) => {
         backgroundColor: "#1c2a45",
       }}
     >
-      <Typography className={classes.speakerSectionTitle} variant="h3">
-        Speakers
-      </Typography>
+
       <Grid container>
         {Object.values(speakers).map(({ name, speakerImage, description, designation, placeOfWork, linkedInProfile }) => (
           <SpeakerCard
