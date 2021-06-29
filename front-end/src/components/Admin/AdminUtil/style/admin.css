@@ -1,0 +1,13 @@
+.researchTable{
+    position: relative;
+    top: -550px;
+    margin-left: -1px;
+    width: 710px;
+}
+
+.workshopsTable{
+    position: absolute;
+    top: 949px;
+    margin-left: 740px;
+    width: 710px;
+}

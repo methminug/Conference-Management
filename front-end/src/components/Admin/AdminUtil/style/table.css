@@ -1,0 +1,18 @@
+.table{
+    width: 710px;
+    margin-top: 50px;
+    box-shadow: 0px 0px 20px 3px rgb(0 0 0 / 10%);
+    border-radius: 20px;
+}
+
+.approved{
+color: white;
+background-color: rgb(10 125 15);
+
+}
+
+.rejected{
+color: white;
+background-color: rgb(170 20 15);
+
+}

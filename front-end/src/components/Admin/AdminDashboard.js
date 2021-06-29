@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Count from "./AdminUtil/CountCart";
 import Barchart from "./Barchart";
 import Table from "./Table";
-import "./style/admin.css";
+import "../AdminUtil/style/admin.css";
 import ContentToPublish from "./ContentToPublish";
 
 const AdminDashboard = () => {
