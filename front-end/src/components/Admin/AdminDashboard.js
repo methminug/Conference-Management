@@ -26,18 +26,24 @@ const AdminDashboard = () => {
         );
         const presenterData = resPresenter.text();
 
-        const resResearchpapers = fetch(`http://localhost:3000/publication`, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+        const resResearchpapers = fetch(
+            `http://localhost:3000/publication/getAllPublications`,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        );
         const Researchpaper = resResearchpapers.json();
 
-        const resWorkshoppapers = fetch(`http://localhost:3000/workshop`, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+        const resWorkshoppapers = fetch(
+            `http://localhost:3000/workshop/getAllWorkshops`,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        );
         const Workshoppaper = resWorkshoppapers.json();
 
         setresearchPapers(Researchpaper.publications);

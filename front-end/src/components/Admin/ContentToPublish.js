@@ -29,7 +29,7 @@ const ContentToPublish = () => {
     };
 
     const Rejecthandle = async (id) => {
-        const res = await fetch(`${BASE_URL}/admin/reject/${id}`, {
+        const res = await fetch(`http://localhost:3000/admin/reject/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
