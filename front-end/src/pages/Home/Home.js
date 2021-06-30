@@ -10,15 +10,10 @@ import {
 } from "../../components";
 import {
   Typography,
-  AppBar,
   Toolbar,
   FormControl,
-  IconButton,
   Select,
-  Button,
 } from "@material-ui/core";
-
-import { MenuOpen } from "@material-ui/icons";
 
 import { useStyles } from "../../assets/globalTheme";
 
