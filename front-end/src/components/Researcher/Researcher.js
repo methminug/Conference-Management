@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import AddPaper from "./AddPaper";
 import "../../pages/Researcher";
 import PublicationCard from "./ResearcherUtil/PublicationCard";
@@ -10,17 +10,19 @@ const Researcher = () => {
     const [profile, setProfile] = useState({});
 
     useEffect(async () => {
-        const res = await fetch(`http://localhost:3000/publication/my`, {
+        const res = await fetch(`http://localhost:3000/publication/me`, {
             headers: {
                 "Content-Type": "application/json",
+                authToken: getUserToken(),
             },
         });
         const data = await res.json();
         setPublications(data);
 
-        const result = await fetch(`http://localhost:3000/researcher/my`, {
+        const result = await fetch(`http://localhost:3000/researcher/me`, {
             headers: {
                 "Content-Type": "application/json",
+                authToken: getUserToken(),
             },
         });
         const profile = await result.json();
