@@ -30,6 +30,7 @@ class Login extends React.Component {
     componentWillReceiveProps = (nextProps) => {
         if (this.props.loginuser !== nextProps.loginuser) {
             if (nextProps.loginuser.username !== null) {
+                //store locle storage user data
                 NotificationManager.success("Login successful");
                 localStorage.setItem("user_id", nextProps.loginuser.user_id);
                 localStorage.setItem("username", nextProps.loginuser.username);
@@ -39,7 +40,7 @@ class Login extends React.Component {
                 NotificationManager.error("Error with login");
             }
         }
-
+        //remove locle storage user data
         if (this.props.loginuserError !== nextProps.loginuserError) {
             if (nextProps.loginuserError && nextProps.loginuserError.name) {
                 if (_.isEqual(nextProps.loginuserError.name, "Error")) {

@@ -4,7 +4,7 @@ describe("GET @ /publication api", () => {
     it(" return all publication and return status code 200", async () => {
         try {
             const res = axios.get(
-                "http://localhost:5000/publication/getAllPublications"
+                "http://localhost:3000/publication/getAllPublications"
             );
 
             expect(res.status).toEqual(200);

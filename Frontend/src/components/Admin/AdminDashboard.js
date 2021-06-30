@@ -13,19 +13,21 @@ const AdminDashboard = () => {
     const [workshopPapers, setworkshopPapers] = useState([]);
 
     useEffect(() => {
+        //get no. of attendees
         const resAttendee = fetch(`http://localhost:3000/admin/attendeeCount`);
         const attendeeData = resAttendee.text();
-
+        //get no. of researchers
         const resResearcher = fetch(
             `http://localhost:3000/admin/researchersCount`
         );
         const researcherData = resResearcher.text();
-
+        //get no. of presenters
         const resPresenter = fetch(
             `http://localhost:3000/admin/presentersCount`
         );
         const presenterData = resPresenter.text();
 
+        //get get all research publication details
         const resResearchpapers = fetch(
             `http://localhost:3000/publication/getAllPublications`,
             {
@@ -36,6 +38,7 @@ const AdminDashboard = () => {
         );
         const Researchpaper = resResearchpapers.json();
 
+        //  get all workshop details
         const resWorkshoppapers = fetch(
             `http://localhost:3000/workshop/getAllWorkshops`,
             {

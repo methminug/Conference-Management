@@ -9,6 +9,7 @@ const Researcher = () => {
     const [profile, setProfile] = useState({});
 
     useEffect(async () => {
+        //get researcher’s all research publications
         const res = await fetch(
             `http://localhost:3000/publication/getMyPublications`,
             {
@@ -20,7 +21,7 @@ const Researcher = () => {
         );
         const data = await res.json();
         setPublications(data);
-
+        //get researcher details
         const result = await fetch(`http://localhost:3000/researcher/me`, {
             headers: {
                 "Content-Type": "application/json",

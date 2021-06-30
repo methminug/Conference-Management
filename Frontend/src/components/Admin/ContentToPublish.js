@@ -9,6 +9,7 @@ const ContentToPublish = () => {
     const [Click, setClick] = useState("");
 
     useEffect(async () => {
+        //get pending editors’ contents  details
         const resNotice = await fetch(
             `http://localhost:3000/admin/getPendingNotice`
         );
@@ -17,6 +18,7 @@ const ContentToPublish = () => {
     }, [Click]);
 
     const Approvehandle = async (id) => {
+        // For approving editors’ contents
         const res = await fetch(`http://localhost:3000/admin/accept/${id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
@@ -29,6 +31,7 @@ const ContentToPublish = () => {
     };
 
     const Rejecthandle = async (id) => {
+        // For rejecting editors’ contents
         const res = await fetch(`http://localhost:3000/admin/reject/${id}`, {
             method: "PATCH",
             headers: {
