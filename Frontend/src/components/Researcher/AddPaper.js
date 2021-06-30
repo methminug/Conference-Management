@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import "react-toastify/dist/ReactToastify.css";
 
 const AddPaper = () => {

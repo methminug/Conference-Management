@@ -7,4 +7,5 @@ router.get(
     "/getMyPublications",
     PublicationController.getResearcherPublications
 );
+router.get("/create", PublicationController.postPublication);
 module.exports = router;

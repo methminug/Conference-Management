@@ -18,3 +18,16 @@ exports.getResearcherPublications = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 };
+exports.postPublication = async (req, res) => {
+    if (req.body) {
+        const newPublication = new Publication(req.body);
+        try {
+            await newPublication.save();
+            response.status(201).json(newPublication);
+        } catch (error) {
+            response.status(406).json({ message: error.message });
+        }
+    } else {
+        response.status(406).json({ message: "req body is empty" });
+    }
+};

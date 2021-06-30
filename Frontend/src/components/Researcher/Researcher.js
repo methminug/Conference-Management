@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import AddPaper from "./AddPaper";
-import "../../pages/Researcher";
 import PublicationCard from "./ResearcherUtil/PublicationCard";
 import ResearcherProfileCard from "./ResearcherUtil/ResearcherProfileCard";
 

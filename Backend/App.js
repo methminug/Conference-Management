@@ -16,7 +16,7 @@ app.use("/workshop", workshopRoutes);
 app.use("/researcher", researcherRoutes);
 mongoose
     .connect(
-        "mongodb+srv://shalitha:JaQSeqkhtO7235CB@conference-data.vet1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+        "mongodb+srv://shalitha:JaQSeqkhtO7235CB@conference-data.vet1s.mongodb.net/conference-data?retryWrites=true&w=majority",
         { useNewUrlParser: true, useUnifiedTopology: true }
     )
     .then((result) => {
