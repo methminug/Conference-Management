@@ -8,3 +8,13 @@ exports.getAllPublications = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 };
+exports.getResearcherPublications = async (req, res) => {
+    try {
+        const researcherPublications = await Publication.find({
+            researcher: req.userId,
+        });
+        res.status(200).json(researcherPublications);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};

@@ -10,12 +10,15 @@ const Researcher = () => {
     const [profile, setProfile] = useState({});
 
     useEffect(async () => {
-        const res = await fetch(`http://localhost:3000/publication/me`, {
-            headers: {
-                "Content-Type": "application/json",
-                authToken: getUserToken(),
-            },
-        });
+        const res = await fetch(
+            `http://localhost:3000/publication/getMyPublications`,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    authToken: getUserToken(),
+                },
+            }
+        );
         const data = await res.json();
         setPublications(data);
 
