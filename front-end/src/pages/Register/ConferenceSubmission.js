@@ -12,6 +12,7 @@ import {
 
 import { useStyles } from "./Register.style";
 import storage from "./firebase";
+import { URL_USER, URL_WORKSHOP } from "../../AppUrls";
 
 const ConferenceSubmission = ({
   nextStep,
@@ -26,8 +27,8 @@ const ConferenceSubmission = ({
   const upload = () => {
     if (details.upload == "") {
       alert("Please upload your submission to proceed");
-      return
-    };
+      return;
+    }
 
     const fileName = details.uploadTitle + " - " + details.name;
 
@@ -42,13 +43,44 @@ const ConferenceSubmission = ({
           .child(fileName)
           .getDownloadURL()
           .then((url) => {
-            setDownloadUrl(url);
+            //setDownloadUrl(url);
             console.log(url);
             console.log(details);
 
-            //POST HERE
+            let userID;
 
-            nextStep();
+            axios
+              .post(URL_USER, details)
+              .then((response) => {
+                console.log(response);
+                userID = response.data.data._id;
+                console.log(response.data.data._id);
+
+                if (details.userType === "Researcher") {
+                } else {
+                  const workshopUpload = {
+                    users: userID,
+                    uploadTitle: details.uploadTitle,
+                    uploadDate: new Date(),
+                    isApproved: "pending",
+                    content: url,
+                  };
+
+                  console.log(workshopUpload);
+
+                  axios.post(URL_WORKSHOP,workshopUpload).then((response) => {
+                    console.log(response);
+                    nextStep()
+                  }).catch((e) => {
+                    setError(e.error)
+                  });
+                }
+
+                nextStep();
+              })
+              .catch((e) => {
+                setError(e.error);
+              });
           });
       });
   };
@@ -70,7 +102,7 @@ const ConferenceSubmission = ({
               justifyContent: "space-evenly",
               alignItems: "center",
               alignItems: "center",
-              alignContent: "space-around"
+              alignContent: "space-around",
             }}
           >
             <Grid item>
@@ -81,7 +113,7 @@ const ConferenceSubmission = ({
                 label="Submission Title"
                 onChange={handleChange}
                 variant="outlined"
-                style={{marginTop:"100px"}}
+                style={{ marginTop: "100px" }}
               />
             </Grid>
 

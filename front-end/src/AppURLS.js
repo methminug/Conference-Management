@@ -5,3 +5,5 @@ export const URL_GET_TRACKS = "http://localhost:8080/track/"
 export const URL_GET_SESSION = "http://localhost:8080/session/"
 
 export const URL_USER = "http://localhost:8080/user/"
+
+export const URL_WORKSHOP = "http://localhost:8080/workshop/"
