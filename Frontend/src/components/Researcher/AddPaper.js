@@ -28,6 +28,7 @@ const AddPaper = () => {
 
     const handleMaterial = async () => {
         const response = await fetch(
+            //submit new research paper to approve
             `http://localhost:3000/publication/create`,
             {
                 method: "POST",
