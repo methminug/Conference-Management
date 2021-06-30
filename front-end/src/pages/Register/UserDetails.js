@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
   TextField,
-  Card,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
   Typography,
   Button,
   FormGroup,
@@ -12,8 +14,12 @@ import {
 
 import { useStyles } from "./Register.style";
 
-const UserDetails = ({ nextStep, details, handleChange }) => {
+const UserDetails = ({ nextStep, details, handleChange, setUserType }) => {
   const classes = useStyles();
+
+  function handleRadioChange(e) {
+    setUserType(e.target.value);
+  }
 
   return (
     <Grid direction="column" container justify="center" alignItems="center">
@@ -25,118 +31,106 @@ const UserDetails = ({ nextStep, details, handleChange }) => {
       <Grid item>
         <Paper className={classes.background}>
           <Grid
-            direction="column"
             container
-            justify="center"
-            alignItems="center"
+            direction="row"
+            style={{ display: "flex", justifyContent: "space-evenly" }}
           >
             <FormGroup>
-              <Grid item className={classes.gridItem}>
-                <TextField
-                  required
-                  id="email"
-                  type="email"
-                  value={details.email}
-                  label="Your Email"
-                  onChange={handleChange}
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item className={classes.gridItem}>
-                <TextField
-                  required
-                  id="password"
-                  type="password"
-                  value={details.password}
-                  label="New Password"
-                  onChange={handleChange}
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item className={classes.gridItem}>
-                <TextField
-                  required
-                  id="name"
-                  value={details.name}
-                  label="Your Name"
-                  onChange={handleChange}
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item className={classes.gridItem}>
-                <TextField
-                  required
-                  id="contactNumber"
-                  type="phone"
-                  value={details.contactNumber}
-                  label="Contact Number"
-                  onChange={handleChange}
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item className={classes.gridItem}>
-                <Button variant="contained" onClick={nextStep}>
-                  NEXT
-                </Button>
+              <Grid item>
+                <Grid direction="column" container>
+                  <Grid item>
+                    <div className={classes.textFields}>
+                      <TextField
+                        required
+                        id="email"
+                        type="email"
+                        value={details.email}
+                        label="Your Email"
+                        onChange={handleChange}
+                        variant="outlined"
+                      />
+                    </div>
+                  </Grid>
+                  <Grid item>
+                    <div className={classes.textFields}>
+                      <TextField
+                        required
+                        id="password"
+                        type="password"
+                        value={details.password}
+                        label="New Password"
+                        onChange={handleChange}
+                        variant="outlined"
+                      />
+                    </div>
+                  </Grid>
+                  <Grid item>
+                    <div className={classes.textFields}>
+                      <TextField
+                        required
+                        id="name"
+                        value={details.name}
+                        label="Your Name"
+                        onChange={handleChange}
+                        variant="outlined"
+                      />
+                    </div>
+                  </Grid>
+                  <Grid item>
+                    <div className={classes.textFields}>
+                      <TextField
+                        required
+                        id="contactNumber"
+                        type="phone"
+                        value={details.contactNumber}
+                        label="Contact Number"
+                        onChange={handleChange}
+                        variant="outlined"
+                      />
+                    </div>
+                  </Grid>
+                </Grid>
               </Grid>
             </FormGroup>
+
+            <Grid item>
+              <div className={classes.textFields}>
+                <Typography variant="h6">I am</Typography>
+                <RadioGroup
+                  id="userType"
+                  value={details.userType}
+                  onChange={handleRadioChange}
+                >
+                  <FormControlLabel
+                    value="Attendee"
+                    control={<Radio />}
+                    label="an Attendee"
+                  />
+                  <FormControlLabel
+                    value="Workshop Presenter"
+                    control={<Radio />}
+                    label="a Workshop Presenter"
+                  />
+                  <FormControlLabel
+                    value="Researcher"
+                    control={<Radio />}
+                    label="a Researcher"
+                  />
+                </RadioGroup>
+              </div>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <div style={{ alignContent: "center" }}>
+              <Button style={{width: "100%"}} variant="contained" onClick={nextStep}>
+                NEXT
+              </Button>
+            </div>
           </Grid>
         </Paper>
       </Grid>
     </Grid>
   );
 };
-
-{
-  /* <Grid direction="column" container spacing={2} justify="center">
-<Grid item xs={12}>
-  <Card className={classes.formCard}>
-    <Typography variant="h5" component="h2">
-      User details
-    </Typography>
-    <FormGroup className={classes.formGroup}>
-      <TextField
-        required
-        id="email"
-        type="email"
-        value={details.email}
-        label="Your Email"
-        onChange={handleChange}
-        variant="outlined"
-      />
-      <TextField
-        required
-        id="password"
-        type="password"
-        value={details.password}
-        label="New Password"
-        onChange={handleChange}
-        variant="outlined"
-      />
-      <TextField
-        required
-        id="name"
-        value={details.name}
-        label="Your Name"
-        onChange={handleChange}
-        variant="outlined"
-      />
-      <TextField
-        required
-        id="contactNumber"
-        type="phone"
-        value={details.contactNumber}
-        label="Contact Number"
-        onChange={handleChange}
-        variant="outlined"
-      />
-    </FormGroup>
-    <Button variant="outlined" onClick={nextStep}>
-      NEXT
-    </Button>
-  </Card>
-</Grid>
-</Grid> */
-}
 
 export default UserDetails;

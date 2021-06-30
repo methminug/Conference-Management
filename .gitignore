@@ -9,6 +9,7 @@ dist/
 build/
 .cache/
 back-end/.env
+front-end/src/pages/register/firebase.js
 
 # Compiled Java class files
 *.class

@@ -14,7 +14,8 @@ const Register = () => {
     password: "",
     name: "",
     contactNumber: "",
-    userType: "Attendee",
+    userType: "Researcher",
+    uploadTitle: "",
     upload: "",
     step: 1,
   };
@@ -65,24 +66,58 @@ const Register = () => {
       };
     });
   };
-  
+
+  const handleFileUpload = (e) => {
+    setFormDetails((currentdetails) => {
+      return {
+        ...currentdetails,
+        [e.target.id]: e.target.files[0],
+      };
+    });
+  };
+
+  const setUserType = (type) => {
+    setFormDetails((info) => {
+        return{
+            ...info,
+            userType : type,
+        };
+    });
+  }
+
   switch (formDetails.step) {
     case 1:
       return (
-        <div style={{backgroundColor:"#253d60", height:"561px"}}>
-            <UserDetails nextStep={nextStep} handleChange={handleChange} details={formDetails} />
+        <div style={{ backgroundColor: "#253d60", height: "561px" }}>
+          <UserDetails
+            nextStep={nextStep}
+            handleChange={handleChange}
+            details={formDetails}
+            setUserType={setUserType}
+          />
         </div>
       );
     case 2:
       return (
-        <div style={{backgroundColor:"#253d60", height:"561px"}}>
-            <Ticket nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} details={formDetails} />
+        <div style={{ backgroundColor: "#253d60", height: "561px" }}>
+          <Ticket
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleChange={handleChange}
+            details={formDetails}
+          />
         </div>
       );
     case 3:
       return (
-        <div style={{backgroundColor:"#253d60", height:"561px"}}>
-            <ConferenceSubmission nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} details={formDetails} />
+        <div style={{ backgroundColor: "#253d60", height: "561px" }}>
+          <ConferenceSubmission
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleChange={handleChange}
+            handleFileUpload={handleFileUpload}
+            details={formDetails}
+          />
         </div>
       );
     case 4:

@@ -11,9 +11,45 @@ import {
 } from "@material-ui/core";
 
 import { useStyles } from "./Register.style";
+import storage from "./firebase";
 
-const ConferenceSubmission = ({ nextStep, prevStep, details, handleChange }) => {
+const ConferenceSubmission = ({
+  nextStep,
+  prevStep,
+  details,
+  handleChange,
+  handleFileUpload,
+}) => {
   const classes = useStyles();
+  const [downloadUrl, setDownloadUrl] = useState("");
+
+  const upload = () => {
+    if (details.upload == null) return;
+    setDownloadUrl("Getting Download Link...");
+
+    const fileName = details.uploadTitle + " - " + details.name;
+
+    // Sending File to Firebase Storage
+    storage
+      .ref(`/conferencesubmissions/${fileName}`)
+      .put(details.upload)
+      .on("state_changed", () => {
+        // Getting Download Link
+        storage
+          .ref("conferencesubmissions")
+          .child(fileName)
+          .getDownloadURL()
+          .then((url) => {
+            setDownloadUrl(url);
+            console.log(url);
+            console.log(details);
+
+            //POST HERE
+
+            nextStep()
+          });
+      });
+  };
 
   return (
     <Grid direction="column" container justify="center" alignItems="center">
@@ -34,49 +70,29 @@ const ConferenceSubmission = ({ nextStep, prevStep, details, handleChange }) => 
               <Grid item className={classes.gridItem}>
                 <TextField
                   required
-                  id="email"
-                  type="email"
-                  value={details.email}
-                  label="Your Email"
+                  id="uploadTitle"
+                  value={details.uploadTitle}
+                  label="Title"
                   onChange={handleChange}
                   variant="outlined"
                 />
               </Grid>
               <Grid item className={classes.gridItem}>
-                <TextField
-                  required
-                  id="password"
-                  type="password"
-                  value={details.password}
-                  label="New Password"
-                  onChange={handleChange}
-                  variant="outlined"
-                />
               </Grid>
               <Grid item className={classes.gridItem}>
-                <TextField
-                  required
-                  id="name"
-                  value={details.name}
-                  label="Your Name"
-                  onChange={handleChange}
-                  variant="outlined"
-                />
+                <Button variant="contained" component="label">
+                {details.upload !== "" ? details.upload.name : "Pick a File"}
+                  <input
+                    id="upload"
+                    onChange={handleFileUpload}
+                    type="file"
+                    hidden
+                  />
+                </Button>
               </Grid>
               <Grid item className={classes.gridItem}>
-                <TextField
-                  required
-                  id="contactNumber"
-                  type="phone"
-                  value={details.contactNumber}
-                  label="Contact Number"
-                  onChange={handleChange}
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item className={classes.gridItem}>
-                <Button variant="contained" onClick={nextStep}>
-                  NEXT
+                <Button variant="contained" onClick={upload}>
+                  SUBMIT
                 </Button>
                 <Button variant="contained" onClick={prevStep}>
                   PREVIOUS
