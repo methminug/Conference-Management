@@ -10,7 +10,7 @@ const ContentToPublish = () => {
 
     useEffect(async () => {
         const resNotice = await fetch(
-            `http://localhost:3000/admin/notice/pending`
+            `http://localhost:3000/admin/getPendingNotice`
         );
         const notice = await resNotice.json();
         setNotices(notice);
