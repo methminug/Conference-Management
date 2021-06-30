@@ -24,8 +24,10 @@ const ConferenceSubmission = ({
   const [downloadUrl, setDownloadUrl] = useState("");
 
   const upload = () => {
-    if (details.upload == null) return;
-    setDownloadUrl("Getting Download Link...");
+    if (details.upload == "") {
+      alert("Please upload your submission to proceed");
+      return
+    };
 
     const fileName = details.uploadTitle + " - " + details.name;
 
@@ -46,7 +48,7 @@ const ConferenceSubmission = ({
 
             //POST HERE
 
-            nextStep()
+            nextStep();
           });
       });
   };
@@ -55,33 +57,38 @@ const ConferenceSubmission = ({
     <Grid direction="column" container justify="center" alignItems="center">
       <Grid item className={classes.gridItem}>
         <Typography style={{ color: "#F9564F" }} variant="h3" component="h2">
-          Upload your submission
+          Upload your Submission
         </Typography>
       </Grid>
       <Grid item>
         <Paper className={classes.background}>
           <Grid
-            direction="column"
             container
-            justify="center"
-            alignItems="center"
+            direction="column"
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+              alignItems: "center",
+              alignContent: "space-around"
+            }}
           >
-            <FormGroup>
-              <Grid item className={classes.gridItem}>
-                <TextField
-                  required
-                  id="uploadTitle"
-                  value={details.uploadTitle}
-                  label="Title"
-                  onChange={handleChange}
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item className={classes.gridItem}>
-              </Grid>
-              <Grid item className={classes.gridItem}>
+            <Grid item>
+              <TextField
+                required
+                id="uploadTitle"
+                value={details.uploadTitle}
+                label="Submission Title"
+                onChange={handleChange}
+                variant="outlined"
+                style={{marginTop:"100px"}}
+              />
+            </Grid>
+
+            <Grid item>
+              <div className={classes.textFields}>
                 <Button variant="contained" component="label">
-                {details.upload !== "" ? details.upload.name : "Pick a File"}
+                  {details.upload !== "" ? details.upload.name : "Pick a File"}
                   <input
                     id="upload"
                     onChange={handleFileUpload}
@@ -89,16 +96,26 @@ const ConferenceSubmission = ({
                     hidden
                   />
                 </Button>
-              </Grid>
-              <Grid item className={classes.gridItem}>
-                <Button variant="contained" onClick={upload}>
-                  SUBMIT
-                </Button>
-                <Button variant="contained" onClick={prevStep}>
-                  PREVIOUS
-                </Button>
-              </Grid>
-            </FormGroup>
+              </div>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <div style={{ alignContent: "center" }}>
+              <Button
+                className={classes.button2}
+                variant="contained"
+                onClick={prevStep}
+              >
+                PREVIOUS
+              </Button>
+              <Button
+                className={classes.button2}
+                variant="contained"
+                onClick={upload}
+              >
+                SUBMIT
+              </Button>
+            </div>
           </Grid>
         </Paper>
       </Grid>

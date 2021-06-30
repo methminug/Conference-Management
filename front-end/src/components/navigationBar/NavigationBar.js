@@ -20,7 +20,7 @@ const NavigationBar = () => {
     <div>
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>
-          <IconButton edge="end" color="inherit" aria-label="menu">
+          <IconButton href="/" edge="end" color="inherit" aria-label="menu">
             <MenuOpen />
           </IconButton>
           <Typography variant="h6" className={classes.logoText}>

@@ -14,7 +14,7 @@ const Register = () => {
     password: "",
     name: "",
     contactNumber: "",
-    userType: "Researcher",
+    userType: "Attendee",
     uploadTitle: "",
     upload: "",
     step: 1,

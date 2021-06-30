@@ -2,18 +2,28 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
   TextField,
-  Card,
   Typography,
   Button,
-  FormGroup,
   Grid,
   Paper,
 } from "@material-ui/core";
 
 import { useStyles } from "./Register.style";
+import { URL_USER } from "../../AppUrls";
 
 const Ticket = ({ nextStep, prevStep, details, handleChange }) => {
   const classes = useStyles();
+
+  const [error, setError] = useState("")
+
+  const signUp = () => {
+    axios.post(URL_USER,details).then((response) => {
+      console.log(response);
+      nextStep()
+    }).catch((e) => {
+      setError(e.error)
+    });
+  }
 
   return (
     <Grid direction="column" container justify="center" alignItems="center">
@@ -25,64 +35,59 @@ const Ticket = ({ nextStep, prevStep, details, handleChange }) => {
       <Grid item>
         <Paper className={classes.background}>
           <Grid
-            direction="column"
             container
-            justify="center"
-            alignItems="center"
+            direction="column"
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+              alignItems: "center",
+              alignContent: "space-around"
+            }}
           >
-            <FormGroup>
-              <Grid item className={classes.gridItem}>
-                <TextField
-                  required
-                  id="email"
-                  type="email"
-                  value={details.email}
-                  label="Your Email"
-                  onChange={handleChange}
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item className={classes.gridItem}>
-                <TextField
-                  required
-                  id="password"
-                  type="password"
-                  value={details.password}
-                  label="New Password"
-                  onChange={handleChange}
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item className={classes.gridItem}>
-                <TextField
-                  required
-                  id="name"
-                  value={details.name}
-                  label="Your Name"
-                  onChange={handleChange}
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item className={classes.gridItem}>
-                <TextField
-                  required
-                  id="contactNumber"
-                  type="phone"
-                  value={details.contactNumber}
-                  label="Contact Number"
-                  onChange={handleChange}
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item className={classes.gridItem}>
-                <Button variant="contained" onClick={nextStep}>
-                  NEXT
+            <Grid item>
+              <TextField
+                required
+                id="uploadTitle"
+                type="number"
+                value={details.uploadTitle}
+                label="Title"
+                onChange={handleChange}
+                variant="outlined"
+                style={{marginTop:"100px"}}
+              />
+            </Grid>
+
+            <Grid item>
+              <div className={classes.textFields}>
+                <Button variant="contained" component="label">
+                  {details.upload !== "" ? details.upload.name : "Pick a File"}
+                  <input
+                    id="upload"
+                    type="file"
+                    hidden
+                  />
                 </Button>
-                <Button variant="contained" onClick={prevStep}>
-                  PREVIOUS
-                </Button>
-              </Grid>
-            </FormGroup>
+              </div>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <div style={{ alignContent: "center" }}>
+              <Button
+                className={classes.button2}
+                variant="contained"
+                onClick={prevStep}
+              >
+                PREVIOUS
+              </Button>
+              <Button
+                className={classes.button2}
+                variant="contained"
+                onClick={signUp}
+              >
+                PROCEED TO PAYMENT
+              </Button>
+            </div>
           </Grid>
         </Paper>
       </Grid>

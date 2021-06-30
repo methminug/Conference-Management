@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const speakerAPI = require('./api/speaker.api');
 const trackAPI = require('./api/track.api')
 const sessionAPI = require('./api/session.api')
+const userAPI = require('./api/user.api')
 
 dotenv.config();
 const app = express();
@@ -34,6 +35,7 @@ mongoose.connection.once('open', ()=>{
 app.use('/speaker', speakerAPI());
 app.use('/track', trackAPI());
 app.use('/session', sessionAPI());
+app.use('/user', userAPI());
 
 app.listen(PORT,()=>{
     console.log(`Server listening on ${PORT}`)

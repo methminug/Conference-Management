@@ -122,7 +122,7 @@ const UserDetails = ({ nextStep, details, handleChange, setUserType }) => {
           </Grid>
           <Grid item>
             <div style={{ alignContent: "center" }}>
-              <Button style={{width: "100%"}} variant="contained" onClick={nextStep}>
+              <Button className={classes.button} variant="contained" onClick={nextStep}>
                 NEXT
               </Button>
             </div>

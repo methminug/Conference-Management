@@ -7,6 +7,8 @@ export const useStyles = makeStyles({
     height: "340px",
   },
   textFields: {
-    marginTop: "20px",
+    marginTop: "18px",
   },
+  button: { width: "100%", marginTop: "8px" },
+  button2: { width: "50%", marginTop: "94px", float:"left" },
 });
