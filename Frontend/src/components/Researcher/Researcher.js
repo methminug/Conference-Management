@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import getUserToken from "../../auth/auth";
 import AddPaper from "./AddPaper";
 import PublicationCard from "./ResearcherUtil/PublicationCard";
 import ResearcherProfileCard from "./ResearcherUtil/ResearcherProfileCard";
